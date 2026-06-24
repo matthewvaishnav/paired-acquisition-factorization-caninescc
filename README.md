@@ -6,9 +6,9 @@ histopathology dataset.
 
 ## Positioning
 
-This repository tests PathoAlign as a representation-identifiability method, not as clinical software. The study asks whether a locked paired-acquisition neural factorization objective can transfer from SCORPION to an independent five-scanner benchmark and still separate tissue identity from acquisition provenance.
+I use this repository to test PathoAlign as a representation-identifiability method, not as clinical software. The study asks whether a locked paired-acquisition neural factorization objective can transfer from SCORPION to an independent five-scanner benchmark and still separate tissue identity from acquisition provenance.
 
-The high-ground claim is deliberately narrow: PathoAlign reduces scanner identifiability in the scanner-suppressed tissue branch while preserving same-region retrieval and cross-scanner tissue agreement. It does not prove disease biology, clinical validity, diagnostic equivalence, or complete disentanglement.
+The claim is deliberately narrow: PathoAlign reduces scanner identifiability in the scanner-suppressed tissue branch while preserving same-region retrieval and cross-scanner tissue agreement. I do not claim that this proves disease biology, clinical validity, diagnostic equivalence, or complete disentanglement.
 
 ## Headline result
 
