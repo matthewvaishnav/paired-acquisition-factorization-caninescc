@@ -1,8 +1,14 @@
-﻿# PathoAlign External Canine SCC Validation
+# PathoAlign External Canine SCC Validation
 
 Standalone reproducibility package for the external paired-scanner validation of
 PathoAlign on the Multi-Scanner Canine Cutaneous Squamous Cell Carcinoma
 histopathology dataset.
+
+## Positioning
+
+This repository tests PathoAlign as a representation-identifiability method, not as clinical software. The study asks whether a locked paired-acquisition neural factorization objective can transfer from SCORPION to an independent five-scanner benchmark and still separate tissue identity from acquisition provenance.
+
+The high-ground claim is deliberately narrow: PathoAlign reduces scanner identifiability in the scanner-suppressed tissue branch while preserving same-region retrieval and cross-scanner tissue agreement. It does not prove disease biology, clinical validity, diagnostic equivalence, or complete disentanglement.
 
 ## Headline result
 
@@ -18,6 +24,17 @@ while preserving same-region retrieval.
 | Retrieval top-1 worst | 0.881242 | 0.884431 | +0.001731 sample-blocked contrast |
 
 All predefined success criteria passed over 44 biological sample blocks.
+
+## Factorization audit
+
+| Audit metric | PathoAlign mean |
+|---|---:|
+| Acquisition scanner probe | 0.865098 |
+| Acquisition tissue retrieval | 0.180627 |
+| Acquisition effective rank | 13.756 |
+| Cross-covariance RMS | 0.089831 |
+
+Interpretation: scanner identity remained strongly available in the acquisition-specific branch while same-region tissue retrieval was concentrated in the scanner-suppressed tissue branch. This supports a factor-separation interpretation rather than simple representational destruction.
 
 ## What is included
 
@@ -40,10 +57,14 @@ are large or regenerable from the public dataset and scripts.
 2. Build or verify the geometry-qualified patch manifests.
 3. Extract orientation-normalized patches locally.
 4. Extract DINOv2 frozen features.
-5. Run experiments/external_multiscanner/run_canine_pathoalign_crossfold.py.
-6. Run scripts/external_multiscanner/analyze_canine_pathoalign_crossfold.py.
+5. Run `experiments/external_multiscanner/run_canine_pathoalign_crossfold.py`.
+6. Run `scripts/external_multiscanner/analyze_canine_pathoalign_crossfold.py`.
 
-See docs/results.md for the frozen result statement and claim boundary.
+See `docs/results.md` for the frozen result statement and claim boundary.
+
+## Main research hub
+
+https://github.com/matthewvaishnav/computational-pathology-research
 
 ## Claim boundary
 
