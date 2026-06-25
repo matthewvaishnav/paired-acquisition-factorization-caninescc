@@ -3,7 +3,7 @@
 
 Development uses train and validation rows only. Test rows are never forwarded
 through the learned projection. The default grid is two matched methods across
-10 seeds (401-410): paired consistency and full PathoAlign factor separation.
+10 seeds (401-410): paired consistency and full Paired-Acquisition Neural Factorization factor separation.
 """
 
 from __future__ import annotations
@@ -22,7 +22,7 @@ import numpy as np
 import pandas as pd
 import torch
 
-from src.models.scorpion_pathoalign import (
+from src.models.scorpion_paired_acquisition_factorization import (
     ProjectionConfig,
     ScorpionProjection,
     projection_loss,
@@ -271,8 +271,8 @@ def main() -> None:
     parser.add_argument(
         "--methods",
         nargs="+",
-        choices=("paired_consistency", "pathoalign"),
-        default=("paired_consistency", "pathoalign"),
+        choices=("paired_consistency", "paired_acquisition_factorization"),
+        default=("paired_consistency", "paired_acquisition_factorization"),
     )
     parser.add_argument("--seeds", nargs="+", type=int, default=DEFAULT_SEEDS)
     parser.add_argument("--epochs", type=int, default=250)

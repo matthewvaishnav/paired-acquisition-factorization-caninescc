@@ -1,5 +1,5 @@
 #!/usr/bin/env python3
-"""Run frozen PathoAlign across all five canine SCC sample-blocked folds.
+"""Run frozen Paired-Acquisition Neural Factorization across all five canine SCC sample-blocked folds.
 
 Fold-0 validation established that the locked dep20 objective transfers to the
 external canine SCC benchmark. This stage now performs frozen five-fold testing:
@@ -20,8 +20,8 @@ import numpy as np
 import pandas as pd
 import torch
 
-from experiments.scorpion import run_pathoalign_projection as projection
-from src.models.scorpion_pathoalign import ProjectionConfig
+from experiments.scorpion import run_paired_acquisition_factorization_projection as projection
+from src.models.scorpion_paired_acquisition_factorization import ProjectionConfig
 
 
 CANINE_SCANNERS = ("cs2", "gt450", "nz20", "nz210", "p1000")
@@ -37,8 +37,8 @@ VARIANTS = {
         "cross_covariance_weight": 0.0,
         "gradient_reversal_strength": 0.0,
     },
-    "pathoalign_dep20": {
-        "method": "pathoalign",
+    "paired_acquisition_factorization_dep20": {
+        "method": "paired_acquisition_factorization",
         "scanner_adversary_weight": 0.5,
         "scanner_acquisition_weight": 0.5,
         "scanner_dependence_weight": 20.0,
@@ -153,7 +153,7 @@ def mark_frozen_test_projection(path: Path, fold: int) -> None:
     metadata = json.loads(str(arrays["metadata_json"].item()))
     metadata.update(
         {
-            "source": "External canine SCC DINOv2 frozen five-fold PathoAlign test",
+            "source": "External canine SCC DINOv2 frozen five-fold Paired-Acquisition Neural Factorization test",
             "evaluation_stage": "external_canine_frozen_five_fold_test",
             "contains_test_rows": True,
             "fold": int(fold),

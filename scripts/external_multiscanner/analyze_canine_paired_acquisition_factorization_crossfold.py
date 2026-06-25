@@ -1,8 +1,8 @@
 #!/usr/bin/env python3
-"""Analyze frozen five-fold canine SCC PathoAlign test results.
+"""Analyze frozen five-fold canine SCC Paired-Acquisition Neural Factorization test results.
 
 Each biological sample contributes held-out test outcomes exactly once per seed.
-Metrics are averaged over five optimization seeds within sample, then PathoAlign
+Metrics are averaged over five optimization seeds within sample, then Paired-Acquisition Neural Factorization
 minus paired-reference contrasts are inferred over the 44 sample blocks.
 """
 
@@ -283,7 +283,7 @@ def main() -> None:
         merged.insert(0, "fold", fold)
         sample_rows.extend(merged.to_dict("records"))
 
-        if variant == "pathoalign_dep20":
+        if variant == "paired_acquisition_factorization_dep20":
             if acquisition is None:
                 raise SystemExit(f"Missing acquisition features: {path}")
             acquisition_probe, _ = scanner_probe(acquisition, frame, fit, test)
@@ -315,7 +315,7 @@ def main() -> None:
     sample_means = samples.groupby(["variant", "slide_id"], as_index=False)[metric_columns].mean()
     sample_means.to_csv(args.out_dir / "sample_seed_averaged_metrics.csv", index=False)
     paired = sample_means[sample_means["variant"] == "paired_reference"].set_index("slide_id")
-    patho = sample_means[sample_means["variant"] == "pathoalign_dep20"].set_index("slide_id")
+    patho = sample_means[sample_means["variant"] == "paired_acquisition_factorization_dep20"].set_index("slide_id")
     if set(paired.index) != set(patho.index) or len(paired) != 44:
         raise SystemExit("Sample blocks are not matched across methods.")
 
@@ -328,7 +328,7 @@ def main() -> None:
         favorable = differences < 0 if metric in LOWER_IS_BETTER else differences > 0
         row = {
             "metric": metric,
-            "difference_definition": "pathoalign_dep20_minus_paired_reference",
+            "difference_definition": "paired_acquisition_factorization_dep20_minus_paired_reference",
             "n_sample_blocks": len(differences),
             "mean_difference": float(differences.mean()),
             "median_difference": float(np.median(differences)),
@@ -366,7 +366,7 @@ def main() -> None:
         "worst_pair_cosine_ci_above_zero": worst_cosine["bootstrap_ci_025"] > 0,
         "all_biological_dimensions_nonzero": bool(
             runs.loc[
-                runs["variant"] == "pathoalign_dep20", "feature_variance_nonzero_fraction"
+                runs["variant"] == "paired_acquisition_factorization_dep20", "feature_variance_nonzero_fraction"
             ].min()
             == 1.0
         ),
@@ -376,7 +376,7 @@ def main() -> None:
         "n_unique_test_samples": 44,
         "n_seeds_per_sample": 5,
         "method_descriptive_means": method_means.to_dict("records"),
-        "pathoalign_factor_means": factor_means,
+        "paired_acquisition_factorization_factor_means": factor_means,
         "success_criteria": success,
     }
     (args.out_dir / "crossfold_summary.json").write_text(

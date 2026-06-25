@@ -56,8 +56,8 @@ are large or regenerable from the public dataset and scripts.
 2. Build or verify the geometry-qualified patch manifests.
 3. Extract orientation-normalized patches locally.
 4. Extract DINOv2 frozen features.
-5. Run `experiments/external_multiscanner/run_canine_pathoalign_crossfold.py`.
-6. Run `scripts/external_multiscanner/analyze_canine_pathoalign_crossfold.py`.
+5. Run `experiments/external_multiscanner/run_canine_paired_acquisition_factorization_crossfold.py`.
+6. Run `scripts/external_multiscanner/analyze_canine_paired_acquisition_factorization_crossfold.py`.
 
 See `docs/results.md` for the frozen result statement and claim boundary.
 

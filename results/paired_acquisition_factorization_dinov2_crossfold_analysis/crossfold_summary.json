@@ -22,12 +22,12 @@
       "retrieval_top1_average": 0.9333924017603691,
       "retrieval_top1_worst": 0.8844308029135616,
       "scanner_probe_accuracy": 0.36140764156190647,
-      "variant": "pathoalign_dep20"
+      "variant": "paired_acquisition_factorization_dep20"
     }
   ],
   "n_seeds_per_sample": 5,
   "n_unique_test_samples": 44,
-  "pathoalign_factor_means": {
+  "paired_acquisition_factorization_factor_means": {
     "acquisition_effective_rank": 13.756290388939847,
     "acquisition_scanner_probe": 0.8650975761685382,
     "acquisition_tissue_retrieval": 0.18062726291487632,

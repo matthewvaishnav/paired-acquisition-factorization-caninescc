@@ -55,7 +55,7 @@ class ScorpionProjection(nn.Module):
 
     def __init__(self, method: str, config: ProjectionConfig, n_scanners: int = 5):
         super().__init__()
-        if method not in {"paired_consistency", "pathoalign"}:
+        if method not in {"paired_consistency", "paired_acquisition_factorization"}:
             raise ValueError(f"Unknown method: {method}")
         self.method = method
         self.config = config
@@ -63,7 +63,7 @@ class ScorpionProjection(nn.Module):
             config.input_dim, config.hidden_dim, config.biological_dim
         )
 
-        if method == "pathoalign":
+        if method == "paired_acquisition_factorization":
             self.acquisition = _mlp(
                 config.input_dim, config.hidden_dim, config.acquisition_dim
             )
@@ -105,7 +105,7 @@ class ScorpionProjection(nn.Module):
             "scanner_b": None,
             "scanner_a": None,
         }
-        if self.method == "pathoalign":
+        if self.method == "paired_acquisition_factorization":
             output["scanner_b"] = self.scanner_from_b(
                 gradient_reverse(
                     biological, self.config.gradient_reversal_strength
@@ -212,7 +212,7 @@ def projection_loss(
         + config.covariance_weight * parts["covariance_b"]
     )
 
-    if model.method == "pathoalign":
+    if model.method == "paired_acquisition_factorization":
         acquisition = output["acquisition"]
         parts["scanner_b"] = F.cross_entropy(output["scanner_b"], scanner_labels)
         parts["scanner_a"] = F.cross_entropy(output["scanner_a"], scanner_labels)

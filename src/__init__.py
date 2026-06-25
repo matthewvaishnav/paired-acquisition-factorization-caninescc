@@ -1,1 +1,1 @@
-﻿"""PathoAlign external canine SCC validation package."""
+﻿"""Paired-Acquisition Neural Factorization external canine SCC validation package."""

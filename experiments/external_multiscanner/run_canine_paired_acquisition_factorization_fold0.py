@@ -1,7 +1,7 @@
 #!/usr/bin/env python3
-"""Run frozen PathoAlign validation on canine SCC fold 0.
+"""Run frozen Paired-Acquisition Neural Factorization validation on canine SCC fold 0.
 
-This is the first external paired-acquisition PathoAlign validation. It reuses
+This is the first external paired-acquisition Paired-Acquisition Neural Factorization validation. It reuses
 the locked SCORPION projection implementation, but patches the scanner namespace
 to the five canine scanners before grouping or training. Test rows are never
 projected; only train+validation rows are used for fold-0 validation analysis.
@@ -20,8 +20,8 @@ import numpy as np
 import pandas as pd
 import torch
 
-from experiments.scorpion import run_pathoalign_projection as projection
-from src.models.scorpion_pathoalign import ProjectionConfig
+from experiments.scorpion import run_paired_acquisition_factorization_projection as projection
+from src.models.scorpion_paired_acquisition_factorization import ProjectionConfig
 
 
 CANINE_SCANNERS = ("cs2", "gt450", "nz20", "nz210", "p1000")
@@ -35,8 +35,8 @@ VARIANTS = {
         "cross_covariance_weight": 0.0,
         "gradient_reversal_strength": 0.0,
     },
-    "pathoalign_dep20": {
-        "method": "pathoalign",
+    "paired_acquisition_factorization_dep20": {
+        "method": "paired_acquisition_factorization",
         "scanner_adversary_weight": 0.5,
         "scanner_acquisition_weight": 0.5,
         "scanner_dependence_weight": 20.0,
@@ -194,7 +194,7 @@ def main() -> None:
             metadata = json.loads(str(arrays["metadata_json"].item()))
             metadata.update(
                 {
-                    "source": "External canine SCC DINOv2 PathoAlign validation",
+                    "source": "External canine SCC DINOv2 Paired-Acquisition Neural Factorization validation",
                     "model": f"canine_dinov2_{variant_name}",
                     "evaluation_stage": "external_canine_fold0_validation",
                     "contains_test_rows": False,

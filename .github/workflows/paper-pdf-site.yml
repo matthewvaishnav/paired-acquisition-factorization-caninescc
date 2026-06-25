@@ -38,9 +38,9 @@ jobs:
         if: github.event_name != 'pull_request'
         run: |
           mkdir -p paper_pdf_site
-          cp paper/main.pdf paper_pdf_site/pathoalign-external-caninescc.pdf
+          cp paper/main.pdf paper_pdf_site/paired-acquisition-factorization-caninescc.pdf
           cp paper/main.pdf paper_pdf_site/external-paired-scanner-validation.pdf
-          cp paper/main.pdf paper_pdf_site/canine-scc-pathoalign-validation.pdf
+          cp paper/main.pdf paper_pdf_site/canine-scc-paired_acquisition_factorization-validation.pdf
           touch paper_pdf_site/.nojekyll
           cat > paper_pdf_site/index.html <<'HTML'
           <!doctype html>
@@ -48,12 +48,12 @@ jobs:
           <head>
             <meta charset="utf-8">
             <meta name="viewport" content="width=device-width, initial-scale=1">
-            <meta http-equiv="refresh" content="0; url=./pathoalign-external-caninescc.pdf">
-            <title>PathoAlign External Canine SCC Validation</title>
+            <meta http-equiv="refresh" content="0; url=./paired-acquisition-factorization-caninescc.pdf">
+            <title>Paired-Acquisition Neural Factorization External Canine SCC Validation</title>
           </head>
           <body>
-            <p><a href="./pathoalign-external-caninescc.pdf">Open the PathoAlign external canine SCC validation PDF</a></p>
-            <p><a href="https://github.com/matthewvaishnav/pathoalign-external-caninescc">Open the reproducibility repository</a></p>
+            <p><a href="./paired-acquisition-factorization-caninescc.pdf">Open the Paired-Acquisition Neural Factorization external canine SCC validation PDF</a></p>
+            <p><a href="https://github.com/matthewvaishnav/paired-acquisition-factorization-caninescc">Open the reproducibility repository</a></p>
           </body>
           </html>
           HTML
