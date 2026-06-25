@@ -39,8 +39,6 @@ jobs:
         run: |
           mkdir -p paper_pdf_site
           cp paper/main.pdf paper_pdf_site/paired-acquisition-factorization-caninescc.pdf
-          cp paper/main.pdf paper_pdf_site/external-paired-scanner-validation.pdf
-          cp paper/main.pdf paper_pdf_site/canine-scc-paired_acquisition_factorization-validation.pdf
           touch paper_pdf_site/.nojekyll
           cat > paper_pdf_site/index.html <<'HTML'
           <!doctype html>
