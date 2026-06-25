@@ -224,7 +224,7 @@ def main() -> None:
     expected = len(args.seeds) * len(VARIANTS)
     if len(pd.read_csv(results_path)) != expected:
         raise projection.ExperimentError(f"Expected {expected} completed fits.")
-    print("CANINE SCC PATHOALIGN FOLD0 TRAINING PASSED")
+    print("CANINE SCC PAIRED-ACQUISITION FACTORIZATION FOLD0 TRAINING PASSED")
     print(f"Completed fits: {expected}")
     print(f"Results: {results_path.resolve()}")
 
@@ -233,5 +233,5 @@ if __name__ == "__main__":
     try:
         main()
     except (projection.ExperimentError, OSError, RuntimeError) as exc:
-        print(f"CANINE SCC PATHOALIGN FOLD0 TRAINING FAILED: {exc}", file=sys.stderr)
+        print(f"CANINE SCC PAIRED-ACQUISITION FACTORIZATION FOLD0 TRAINING FAILED: {exc}", file=sys.stderr)
         raise SystemExit(1) from exc

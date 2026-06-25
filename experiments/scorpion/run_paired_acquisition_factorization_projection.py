@@ -362,7 +362,7 @@ def main() -> None:
     expected = len(args.methods) * len(args.seeds)
     if len(rows) != expected:
         raise ExperimentError(f"Expected {expected} fits, observed {len(rows)}")
-    print("SCORPION PATHOALIGN PROJECTION TRAINING PASSED")
+    print("SCORPION PAIRED-ACQUISITION FACTORIZATION PROJECTION TRAINING PASSED")
     print(pd.DataFrame(rows).groupby("method").mean(numeric_only=True).to_string())
     print(f"Results: {(args.out_dir / 'training_results.csv').resolve()}")
 
@@ -371,5 +371,5 @@ if __name__ == "__main__":
     try:
         main()
     except (ExperimentError, OSError, RuntimeError) as exc:
-        print(f"SCORPION PATHOALIGN TRAINING FAILED: {exc}", file=sys.stderr)
+        print(f"SCORPION PAIRED-ACQUISITION FACTORIZATION TRAINING FAILED: {exc}", file=sys.stderr)
         raise SystemExit(1) from exc

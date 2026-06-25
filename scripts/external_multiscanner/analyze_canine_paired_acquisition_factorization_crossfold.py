@@ -387,7 +387,7 @@ def main() -> None:
     print(method_means.to_string(index=False))
     print("\nSAMPLE-BLOCKED CONTRASTS")
     print(contrasts.to_string(index=False))
-    print("\nPATHOALIGN FACTOR MEANS")
+    print("\nPAIRED-ACQUISITION FACTORIZATION FACTOR MEANS")
     print(json.dumps(factor_means, indent=2, sort_keys=True))
     print("\nSUCCESS CRITERIA")
     print(json.dumps(success, indent=2, sort_keys=True))
