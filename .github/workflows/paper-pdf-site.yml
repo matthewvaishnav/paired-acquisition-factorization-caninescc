@@ -47,11 +47,14 @@ jobs:
             <meta charset="utf-8">
             <meta name="viewport" content="width=device-width, initial-scale=1">
             <meta http-equiv="refresh" content="0; url=./paired-acquisition-factorization-caninescc.pdf">
+            <link rel="canonical" href="./paired-acquisition-factorization-caninescc.pdf">
             <title>Paired-Acquisition Neural Factorization External Canine SCC Validation</title>
+            <script>
+              window.location.replace("./paired-acquisition-factorization-caninescc.pdf");
+            </script>
           </head>
           <body>
             <p><a href="./paired-acquisition-factorization-caninescc.pdf">Open the Paired-Acquisition Neural Factorization external canine SCC validation PDF</a></p>
-            <p><a href="https://github.com/matthewvaishnav/paired-acquisition-factorization-caninescc">Open the reproducibility repository</a></p>
           </body>
           </html>
           HTML
