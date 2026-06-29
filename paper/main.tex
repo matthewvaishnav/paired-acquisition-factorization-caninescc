@@ -1,9 +1,8 @@
 \documentclass[10pt]{article}
 
-\usepackage[letterpaper,margin=1in]{geometry}
+\usepackage[letterpaper,top=1.02in,bottom=0.92in,left=1.50in,right=1.50in]{geometry}
 \usepackage{times}
 \usepackage{microtype}
-\usepackage{ragged2e}
 \usepackage{amsmath,amssymb}
 \usepackage{booktabs}
 \usepackage{graphicx}
@@ -12,58 +11,51 @@
 \usepackage{url}
 \usepackage[hidelinks]{hyperref}
 
-\setlength{\columnsep}{0.25in}
 \setlength{\parindent}{0pt}
-\setlength{\parskip}{0.28em}
+\setlength{\parskip}{0.54em}
 \emergencystretch=2em
 \titleformat{\section}
   {\large\bfseries\raggedright}
   {\thesection}{1em}{}
-\titlespacing*{\section}{0pt}{1.2em}{0.55em}
+\titlespacing*{\section}{0pt}{1.35em}{0.65em}
 
-\captionsetup{font=small,labelfont=bf,skip=3pt}
-
-\title{External Paired-Scanner Validation of Paired-Acquisition Neural Factorization on Canine\\
-Squamous Cell Carcinoma Histopathology}
-
-\author{
-Matthew Vaishnav\\
-Independent Researcher\\
-Kitchener-Waterloo, Canada\\
-\texttt{github.com/matthewvaishnav/paired-acquisition-factorization-caninescc}
-}
-
-\date{}
+\captionsetup{font=small,labelfont=bf,skip=3pt,hypcap=false}
 
 \begin{document}
-\RaggedRight
-\setlength{\parindent}{0pt}
-\setlength{\parskip}{0.28em}
-\setlength{\parindent}{0pt}
-\setlength{\parskip}{0.28em}
 
-\twocolumn[
-\begin{@twocolumnfalse}
-\maketitle
+\begin{center}
+\rule{\textwidth}{4pt}
+\vspace{0.22in}
+
+{\LARGE\bfseries External Paired-Scanner Validation of\\
+Paired-Acquisition Neural Factorization\\
+on Canine Squamous Cell Carcinoma Histopathology\par}
+
+\vspace{0.18in}
+\rule{\textwidth}{0.4pt}
+\vspace{0.32in}
+
+{\bfseries Matthew Vaishnav}\par
+Independent Researcher\par
+Kitchener-Waterloo, Canada\par
+\texttt{paired-acquisition-factorization-caninescc}
+\end{center}
+
+\vspace{0.28in}
 
 \begin{center}
 {\bfseries Abstract}
 \end{center}
-{\small
-\RaggedRight
+\begin{center}
+\begin{minipage}{0.82\textwidth}
+\small
 \setlength{\parindent}{0pt}
-\setlength{\parskip}{0.15em}
+\setlength{\parskip}{0.25em}
 \noindent Scanner-specific acquisition effects can confound representation learning in computational pathology, especially when models are evaluated across sites, devices, or staining/scanning pipelines. Paired-Acquisition Neural Factorization is a paired-acquisition projection objective designed to preserve biological region identity while reducing scanner-identifiable signal in the biological embedding. I evaluate whether a Paired-Acquisition Neural Factorization configuration selected on a human paired-scanner benchmark transfers to an independent public multi-scanner canine cutaneous squamous cell carcinoma dataset. After auditing annotation correspondence and applying deterministic geometry qualification, I retained 805 complete five-scanner regions from 44 biological samples. Using frozen DINOv2-Base features and locked hyperparameters, Paired-Acquisition Neural Factorization reduced sample-blocked scanner-probe accuracy by 0.380 absolute while improving cross-scanner pair cosine and preserving same-region retrieval. These results support Paired-Acquisition Neural Factorization as a paired-acquisition representation method that transfers beyond the development benchmark, while remaining a research-only validation rather than a clinical or diagnostic claim.
-\par
-}
+\end{minipage}
+\end{center}
 
-\vspace{0.15in}
-\end{@twocolumnfalse}
-]
-
-\RaggedRight
-\setlength{\parindent}{0pt}
-\setlength{\parskip}{0.28em}
+\vspace{0.28in}
 \section{Introduction}
 
 Computational pathology representations can encode both tissue morphology and acquisition artifacts. When acquisition signal is correlated with scanner, site, or cohort membership, downstream performance may reflect technical shortcuts rather than robust biological representation. Paired-acquisition datasets provide a direct way to test whether a representation preserves tissue identity while reducing scanner-identifiable variation.
@@ -175,11 +167,8 @@ The accompanying repository contains the scripts, split metadata, compact result
 
 The supported claim is narrow: on an independent paired-scanner canine SCC benchmark, a Paired-Acquisition Neural Factorization projection with hyperparameters locked from the human SCORPION development benchmark reduced scanner identifiability while preserving same-region retrieval and improving cross-scanner cosine consistency. This is not clinical validation, diagnostic software, or evidence of patient-care utility.
 
-\clearpage
-\onecolumn
-\RaggedRight
 \setlength{\parindent}{0pt}
-\setlength{\parskip}{0.35em}
+\setlength{\parskip}{0.54em}
 
 \section{Conclusion}
 
